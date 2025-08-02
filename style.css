@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Fredoka:wght@400;600&display=swap');
+
+/* 🎨 Updated Color Palette to exactly match the image */
+:root {
+  --bg-main: #fffaf6;
+  --bg-light: #fff5ee;
+  --bg-header: linear-gradient(to right, #fceee8, #fff5e9);
+  --accent: #c18a79;
+  --accent-dark: #a57165;
+  --rose: #e6c2b8; /* A more prominent, softer rose for the card outline */
+  --border: #f3dad2;
+  --text: #5c3a32;
+  --text-light: #8d6e63;
+  --white: #ffffff;
+  --tag-bg: #f5eae6;
+  --tag-text: #925e4a;
+  --shadow: rgba(193, 138, 121, 0.15); /* A warmer, more pronounced shadow */
+}
+
+/* 🌐 Base Styles */
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* 🧁 Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-header);
+  padding: 16px 30px;
+  border-radius: 18px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 12px var(--shadow);
+}
+
+h1 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.8rem;
+  margin: 0;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+}
+
+/* 🍰 Buttons */
+.btn {
+  background: var(--white);
+  border: 1.5px solid var(--accent);
+  padding: 10px 22px;
+  border-radius: 30px;
+  color: var(--accent-dark);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 3px 6px var(--shadow);
+}
+
+.btn:hover {
+  background: var(--bg-light);
+  color: var(--text);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Special header buttons */
+header a.btn[href="chat.html"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+}
+
+header a.btn[href="chat.html"]:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+}
+
+/* 🎀 Inputs & Textareas */
+input, textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  font-size: 1rem;
+  font-family: 'Quicksand', sans-serif;
+  background: var(--white);
+  box-sizing: border-box;
+  transition: 0.2s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 8px rgba(165, 113, 101, 0.5);
+}
+
+input::placeholder {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* 📝 Form Buttons */
+button {
+  background: var(--accent);
+  color: var(--white);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 22px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+button:hover {
+  background: var(--accent-dark);
+  box-shadow: 0 6px 12px rgba(165, 113, 101, 0.4);
+}
+
+/* 📄 Post Feed */
+#post-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.post-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--rose);
+  padding: 24px 28px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: 0.3s;
+}
+
+.post-card:hover {
+  box-shadow: 0 8px 16px rgba(193, 138, 121, 0.2);
+}
+
+.post-card h3 {
+  margin-top: 0;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.post-card p {
+  margin: 8px 0;
+  color: var(--text-light);
+}
+
+.post-card img {
+  max-width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  margin-top: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* 🏷️ Tags */
+.tag {
+  display: inline-block;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  padding: 6px 14px;
+  margin: 4px 8px 4px 0;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* 💬 Comments Section */
+#comments-section {
+  background: var(--white);
+  padding: 24px;
+  border-radius: 14px;
+  margin-top: 30px;
+  box-shadow: 0 4px 10px var(--shadow);
+}
+
+#comment-form input {
+  margin-bottom: 10px;
+}
+
+#comment-form button {
+  background: var(--accent);
+}
+
+#comment-form button:hover {
+  background: var(--accent-dark);
+}
+
+/* 🔍 Search bar */
+#search {
+  width: 240px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--text);
+  font-weight: 500;
+}
+/* This button style is not necessary if using .btn class */
+/* ↩️ Back Button */
+.back-btn {
+  display: none;
+}
+
+/* 💬 Chatbot (Header link is styled by a.btn[href="chat.html"]) */
+.chatbox {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--bg-light);
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  width: 300px;
+  max-height: 400px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  font-size: 0.95rem;
+  z-index: 1000;
+}
