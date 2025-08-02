@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Post | BakeBoard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📝 Create a New Baking Post</h1>
+    <a href="index.html" class="btn">Back to Feed</a>
+  </header>
+
+  <main>
+    <form id="create-post-form">
+      <input type="text" id="title" placeholder="Post Title" required />
+      <textarea id="content" placeholder="Describe your bake..." required></textarea>
+      <input type="url" id="image" placeholder="Image URL (optional)" />
+      <input type="text" id="tags" placeholder="Tags (e.g. cake,cookies)" />
+
+      <button type="submit">Post</button>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
