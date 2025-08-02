@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Post | BakeBoard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>✏️ Edit Your Bake</h1>
+    <a href="index.html" class="btn">Back to Feed</a>
+  </header>
+
+  <main>
+    <form id="edit-post-form">
+      <input type="text" id="edit-title" required />
+      <textarea id="edit-content" required></textarea>
+      <input type="url" id="edit-image" placeholder="Image URL" />
+      <input type="text" id="edit-tags" placeholder="Tags (comma separated e.g. cake,cookies)" />
+      <button type="submit">Save Changes</button>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
