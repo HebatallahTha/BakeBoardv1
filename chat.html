@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Baking Assistant | BakeBoard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🤖 Baking Cubit - AI Assistant</h1>
+    <a href="index.html" class="btn">← Back to Feed</a>
+  </header>
+
+  <main class="chat-container">
+    <div id="chat-box"></div>
+    <form id="chat-form">
+      <input type="text" id="chat-input" placeholder="Ask a baking question..." required />
+      <button type="submit">Ask</button>
+    </form>
+  </main>
+
+  <script>
+    const API_KEY = ''; // 🔐 Replace with yours
+    const chatBox = document.getElementById("chat-box");
+    const chatForm = document.getElementById("chat-form");
+    const chatInput = document.getElementById("chat-input");
+
+    // Initialize the conversation history with the system prompt
+    // This is the correct way to set the persona.
+    const history = [
+      {
+        role: "user",
+        parts: [{ text: "You are Baking Cubit, a friendly and helpful AI baking assistant. Answer questions about baking techniques, recipes, substitutions, and troubleshooting. Keep your responses simple and easy to understand." }]
+      },
+      {
+        role: "model",
+        parts: [{ text: "Hello there! How can I help you with your baking today?" }]
+      }
+    ];
+
+    // Display the initial model greeting
+    appendMessage("🤖 Baking Cubit", history[1].parts[0].text);
+
+    chatForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const userMessage = chatInput.value;
+      if (!userMessage.trim()) return;
+
+      appendMessage("🧁 You", userMessage);
+      chatInput.value = "";
+
+      // Add the new user message to the history
+      history.push({
+        role: "user",
+        parts: [{ text: userMessage }]
+      });
+
+      try {
+const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + API_KEY, {          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: history // Send the entire conversation history
+          })
+        });
+
+        const data = await res.json();
+        
+        // Handle potential errors from the API
+        if (data.error) {
+          const errorMessage = data.error.message || "An unknown API error occurred.";
+          console.error("API Error:", data.error);
+          appendMessage("🤖 Baking Cubit", `Sorry, there was an error: ${errorMessage}`);
+          return;
+        }
+
+        const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I’m having trouble with that right now. Could you try again?";
+        appendMessage("🤖 Baking Cubit", reply);
+
+        // Add the model's reply to the history
+        history.push({
+          role: "model",
+          parts: [{ text: reply }]
+        });
+
+      } catch (error) {
+        console.error("Network or Fetch Error:", error);
+        appendMessage("🤖 Baking Cubit", "Oops! Something went wrong. Please check your internet connection and try again.");
+      }
+    });
+
+    function appendMessage(sender, text) {
+      const msg = document.createElement("div");
+      msg.className = "message";
+      msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+</body>
+</html>
