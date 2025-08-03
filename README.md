@@ -31,7 +31,8 @@ chat.html: The page for the AI baking assistant chatbot.
 style.css: All the styling for the application.
 
 script.js: The core JavaScript logic that handles post creation, display, editing, and the chatbot.
-Demo: BakeBoardV1.gif
+
+Demo
 🛠️ Technologies Used
 HTML5: For the page structure.
 
