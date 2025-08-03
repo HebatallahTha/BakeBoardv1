@@ -32,7 +32,8 @@ style.css: All the styling for the application.
 
 script.js: The core JavaScript logic that handles post creation, display, editing, and the chatbot.
 
-Demo
+Demo: ![A quick demonstration of the BakeBoardV1 application in action.](![BakeBoardV1](https://github.com/user-attachments/assets/7eac79dd-3b23-44d2-bbf8-7f416e3c9edb)
+)
 🛠️ Technologies Used
 HTML5: For the page structure.
 
